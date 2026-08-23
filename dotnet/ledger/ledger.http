@@ -1,6 +1,31 @@
 @ledger_HostAddress = http://localhost:5046
 
-GET {{ledger_HostAddress}}/weatherforecast/
+POST {{ledger_HostAddress}}/transactions
+Accept: application/json
+Content-Type: application/json
+
+{
+    "amount" : "2500",
+    "fromAccountId": "1",
+    "toAccountId": "2"
+}
+
+###
+
+@transactionId = 714fbbad-a418-4f75-a2c9-cebe9096071a
+
+DELETE {{ledger_HostAddress}}/transactions/{{transactionId}}
+Accept: application/json
+Content-Type: application/json
+
+###
+
+GET {{ledger_HostAddress}}/transactions
 Accept: application/json
 
 ###
+
+@accountId = 1
+
+GET {{ledger_HostAddress}}/accounts/{{accountId}}/entries
+Accept: application/json
